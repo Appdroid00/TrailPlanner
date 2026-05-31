@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>TrailPlanner</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/mobile.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <div>
+
+    <h1>
+      ✈️ TrailPlanner
+    </h1>
+
+    <p>
+      Plan smarter. Travel better.
+    </p>
+
+  </div>
+
+  <div class="user-info">
+
+    <span id="userEmail"></span>
+
+    <button id="logoutBtn">
+
+      Logout
+
+    </button>
+
+  </div>
+
+</header>
+
+<section class="hero">
+
+  <h2>
+    My Adventures
+  </h2>
+
+  <button id="openTripModal">
+
+    + New Trip
+
+  </button>
+
+</section>
+
+<section class="stats">
+
+  <div class="stat-card">
+
+    <h3 id="tripCount">
+      0
+    </h3>
+
+    <p>
+      Total Trips
+    </p>
+
+  </div>
+
+  <div class="stat-card">
+
+    <h3 id="budgetTotal">
+      ₱0
+    </h3>
+
+    <p>
+      Total Budget
+    </p>
+
+  </div>
+
+  <div class="stat-card">
+
+    <h3 id="upcomingTrips">
+      0
+    </h3>
+
+    <p>
+      Upcoming
+    </p>
+
+  </div>
+
+</section>
+
+<section>
+
+  <h2>
+    My Trips
+  </h2>
+
+  <div
+    id="tripList"
+    class="trip-grid">
+
+    Loading trips...
+
+  </div>
+
+</section>
+
+<!-- CREATE TRIP MODAL -->
+
+<div
+  id="tripModal"
+  class="modal">
+
+  <div class="modal-content">
+
+    <button
+      id="closeTripModal"
+      class="modal-close-btn"
+      type="button"
+      aria-label="Close">
+
+      ×
+
+    </button>
+
+    <h2>
+      Create Trip
+    </h2>
+
+    
+
+<form id="tripForm">
+
+  <div class="form-group">
+
+    <label for="destination">
+      Destination
+    </label>
+
+    <input
+      type="text"
+      id="destination"
+      placeholder="Destination"
+      required>
+
+  </div>
+
+  <div class="form-group">
+
+    <label for="startDate">
+      Start Date
+    </label>
+
+    <input
+      type="date"
+      id="startDate"
+      required>
+
+  </div>
+
+  <div class="form-group">
+
+    <label for="endDate">
+      End Date
+    </label>
+
+    <input
+      type="date"
+      id="endDate"
+      required>
+
+  </div>
+
+  <div class="form-group">
+
+    <label for="budget">
+      Budget
+    </label>
+
+    <input
+      type="number"
+      id="budget"
+      placeholder="Budget">
+
+  </div>
+
+  <div class="form-group">
+
+    <label for="travelers">
+      Travelers
+    </label>
+
+    <input
+      type="number"
+      id="travelers"
+      min="1"
+      value="1">
+
+  </div>
+
+  <button type="submit">
+
+    Save Trip
+
+  </button>
+
+</form>
+
+  </div>
+
+</div>
+
+<nav class="mobile-nav">
+
+  <a href="#">
+    🏠
+  </a>
+
+  <a href="#">
+    🧳
+  </a>
+
+  <a href="#">
+    💰
+  </a>
+
+  <a href="#">
+    👤
+  </a>
+
+</nav>
+
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/trips.js"></script>
+
+</body>
+
+</html>
