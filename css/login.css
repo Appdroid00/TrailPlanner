@@ -33,22 +33,17 @@ box-shadow:
 0 20px 40px rgba(0,0,0,.15);
 }
 
-.logo{
-font-size:3rem;
-text-align:center;
-margin-bottom:10px;
-}
-
 h1{
 text-align:center;
 color:#1e293b;
-margin-bottom:10px;
+margin-bottom:8px;
+font-size:2rem;
 }
 
 .subtitle{
 text-align:center;
 color:#64748b;
-margin-bottom:30px;
+margin-bottom:26px;
 }
 
 input{
@@ -65,6 +60,24 @@ font-size:15px;
 input:focus{
 outline:none;
 border-color:#2563eb;
+}
+
+.signup-only{
+display:none;
+}
+
+.login-card.signup-mode .signup-only{
+display:block;
+}
+
+.login-card.signup-mode .secondary-btn{
+background:#2563eb;
+color:white;
+}
+
+.login-card.signup-mode .primary-btn{
+background:#f1f5f9;
+color:#1e293b;
 }
 
 .primary-btn{
@@ -104,8 +117,36 @@ cursor:pointer;
 background:#e2e8f0;
 }
 
+.login-card h1{
+letter-spacing:0;
+}
+
 #message{
 margin-top:15px;
 text-align:center;
 color:#dc2626;
+font-weight:600;
+min-height:20px;
+line-height:1.4;
+}
+
+#message.success{
+color:#059669;
+}
+
+@media(max-width:480px){
+
+body{
+padding:15px;
+}
+
+.login-card{
+padding:24px 18px;
+border-radius:18px;
+}
+
+h1{
+font-size:1.7rem;
+}
+
 }

@@ -10,6 +10,15 @@ box-shadow:0 8px 20px rgba(0,0,0,.08);
 margin-bottom:20px;
 }
 
+.section-eyebrow{
+font-size:.8rem;
+font-weight:700;
+letter-spacing:0;
+text-transform:uppercase;
+color:#2563eb;
+margin-bottom:6px;
+}
+
 /* =========================
    ITINERARY LAYOUT
 ========================= */
@@ -39,6 +48,61 @@ justify-content:space-between;
 align-items:center;
 gap:15px;
 margin-bottom:20px;
+}
+
+.section-header-tight{
+margin-bottom:18px;
+}
+
+.trip-hub-grid{
+display:grid;
+grid-template-columns:minmax(0,1.5fr) minmax(260px,.9fr);
+gap:16px;
+align-items:start;
+}
+
+.hub-panel{
+background:#f8fafc;
+border:1px solid #e2e8f0;
+border-radius:12px;
+padding:18px;
+}
+
+.hub-panel h3{
+font-size:1.1rem;
+margin-bottom:14px;
+color:#0f172a;
+}
+
+.hub-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.hub-actions a,
+.hub-actions button{
+min-height:46px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-weight:600;
+text-decoration:none;
+cursor:pointer;
+padding:12px 14px;
+}
+
+.hub-actions a:hover,
+.hub-actions button:hover{
+background:#1d4ed8;
+}
+
+#overviewContent .trip-card{
+margin-top:0;
 }
 
 .add-btn{
@@ -244,6 +308,66 @@ height:18px;
 cursor:pointer;
 }
 
+.itinerary-mobile-list{
+display:none;
+gap:12px;
+flex-direction:column;
+margin-top:12px;
+}
+
+.itinerary-mobile-card{
+background:#f8fafc;
+border:1px solid #e2e8f0;
+border-radius:14px;
+padding:14px;
+}
+
+.itinerary-mobile-top{
+display:flex;
+justify-content:space-between;
+gap:12px;
+align-items:flex-start;
+}
+
+.itinerary-mobile-date{
+font-size:.85rem;
+color:#64748b;
+margin-bottom:4px;
+}
+
+.itinerary-mobile-title{
+font-size:1rem;
+font-weight:700;
+color:#1e293b;
+margin:0;
+}
+
+.itinerary-mobile-meta,
+.itinerary-mobile-location{
+font-size:.9rem;
+color:#64748b;
+margin-top:8px;
+}
+
+.itinerary-mobile-actions{
+display:flex;
+gap:8px;
+margin-top:12px;
+}
+
+.itinerary-mobile-actions button{
+flex:0 1 auto;
+padding:10px 14px;
+min-width:0;
+font-size:.92rem;
+}
+
+.itinerary-mobile-check input{
+width:20px;
+height:20px;
+cursor:pointer;
+}
+
 /* =========================
    STATUS DROPDOWN
 ========================= */
@@ -316,13 +440,76 @@ flex-wrap:wrap;
 width:100%;
 }
 
+.itinerary-mobile-actions{
+gap:10px;
+}
+
+.itinerary-mobile-actions .edit-btn,
+.itinerary-mobile-actions .delete-btn{
+width:auto;
+min-height:40px;
+padding:10px 16px;
+}
+
 .itinerary-table{
-min-width:760px;
+min-width:680px;
+display:block;
 }
 
 .tab-content,
 .itinerary-list-panel{
 padding:18px;
+}
+
+.trip-hub-grid{
+grid-template-columns:1fr;
+}
+
+.hub-actions{
+grid-template-columns:1fr;
+}
+
+.hub-panel{
+padding:16px;
+}
+
+.hub-actions-panel{
+display:none;
+}
+
+.itinerary-table th,
+.itinerary-table td{
+padding:10px;
+font-size:.92rem;
+}
+
+#activityModal .modal-content{
+width:95%;
+padding:22px;
+}
+
+.itinerary-table-wrapper{
+display:block;
+}
+
+.itinerary-mobile-list{
+display:none;
+}
+
+.itinerary-table{
+display:table;
+}
+
+.itinerary-list-panel{
+position:relative;
+}
+
+.itinerary-mobile-list{
+display:flex;
+}
+
+.itinerary-table-wrapper{
+display:none;
 }
 
 }
@@ -338,12 +525,17 @@ background:rgba(15,23,42,.45);
 backdrop-filter:blur(4px);
 justify-content:center;
 align-items:center;
-z-index:9999;
+z-index:3000;
+padding:16px;
+overflow-y:auto;
 }
 
 .delete-modal{
-width:90%;
+width:min(92vw, 450px);
 max-width:450px;
+max-height:calc(100svh - 32px);
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
 background:white;
 padding:36px;
 border-radius:20px;
@@ -387,4 +579,20 @@ padding:12px 22px;
 border-radius:12px;
 cursor:pointer;
 font-weight:600;
+}
+
+@media(max-width:768px){
+
+  .modal-overlay{
+    align-items:flex-start;
+    padding:12px;
+  }
+
+  .delete-modal{
+    width:100%;
+    max-height:calc(100svh - 24px);
+    padding:24px 18px;
+    border-radius:18px;
+  }
+
 }

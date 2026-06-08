@@ -453,6 +453,58 @@ function renderActivities(
     `
     ).join("");
 
+  const mobileContainer =
+    document.getElementById(
+      "mobileItineraryList"
+    );
+
+  if (mobileContainer) {
+    mobileContainer.innerHTML =
+      activities.map(
+        activity => `
+          <div class="itinerary-mobile-card">
+            <div class="itinerary-mobile-top">
+              <div>
+                <p class="itinerary-mobile-date">
+                  ${activity.activity_date}
+                </p>
+                <h3 class="itinerary-mobile-title ${activity.completed ? "completed" : ""}">
+                  ${activity.title}
+                </h3>
+              </div>
+              <label class="itinerary-mobile-check">
+                <input
+                  type="checkbox"
+                  ${activity.completed ? "checked" : ""}
+                  onchange="toggleComplete('${activity.id}', ${activity.completed})">
+              </label>
+            </div>
+
+            <p class="itinerary-mobile-meta">
+              ${formatTime(activity.activity_time)} · ${activity.category || "-"}
+            </p>
+
+            <p class="itinerary-mobile-location">
+              ${activity.location || "-"}
+            </p>
+
+            <div class="itinerary-mobile-actions">
+              <button
+                class="edit-btn"
+                onclick="editActivity('${activity.id}')">
+                Edit
+              </button>
+              <button
+                class="delete-btn"
+                onclick="deleteActivity('${activity.id}')">
+                Delete
+              </button>
+            </div>
+          </div>
+        `
+      ).join("");
+  }
+
 }
 
 async function editActivity(id) {

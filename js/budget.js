@@ -273,6 +273,39 @@ async function loadTripBudget() {
       `trip.html?id=${tripId}#notes`;
   }
 
+  const mobileTripLink =
+    document.getElementById(
+      "budgetMobileTripLink"
+    );
+
+  if (mobileTripLink) {
+    mobileTripLink.dataset.href =
+      `trip.html?id=${tripId}`;
+  }
+
+  const mobilePackingLink =
+    document.getElementById(
+      "budgetMobilePackingLink"
+    );
+
+  if (mobilePackingLink) {
+    mobilePackingLink.dataset.href =
+      `packing.html?id=${tripId}`;
+  }
+
+  const mobileNotesLink =
+    document.getElementById(
+      "budgetMobileNotesLink"
+    );
+
+  if (mobileNotesLink) {
+    mobileNotesLink.dataset.href =
+      `trip.html?id=${tripId}#notes`;
+    mobileNotesLink.removeAttribute(
+      "data-scroll"
+    );
+  }
+
   document.getElementById(
     "totalBudget"
   ).textContent =
@@ -480,6 +513,63 @@ function renderExpenses(
         </tbody>
 
       </table>
+
+    </div>
+
+    <div class="expense-mobile-list">
+
+      ${expenses.map(
+        expense => `
+
+        <div class="expense-mobile-card">
+
+          <div class="expense-mobile-top">
+
+            <div>
+              <p class="expense-mobile-date">
+                ${new Date(
+                  expense.expense_date
+                ).toLocaleDateString(
+                  "en-US"
+                )}
+              </p>
+              <h3 class="expense-mobile-description">
+                ${expense.description}
+              </h3>
+            </div>
+
+            <div class="expense-mobile-amount">
+              ${formatPeso(
+                expense.amount
+              )}
+            </div>
+
+          </div>
+
+          <p class="expense-mobile-category">
+            ${expense.category}
+          </p>
+
+          <div class="expense-mobile-actions">
+
+            <button
+              class="edit-btn"
+              onclick="editExpense('${expense.id}')">
+              Edit
+            </button>
+
+            <button
+              class="delete-btn"
+              onclick="deleteExpense('${expense.id}')">
+              Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      `
+      ).join("")}
 
     </div>
 

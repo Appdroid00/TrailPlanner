@@ -1,0 +1,84 @@
+.profile-layout{
+display:grid;
+grid-template-columns:minmax(0,760px);
+gap:20px;
+}
+
+.profile-panel{
+background:white;
+padding:25px;
+border-radius:8px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.profile-eyebrow{
+font-size:.8rem;
+font-weight:700;
+text-transform:uppercase;
+letter-spacing:0;
+color:#2563eb;
+margin-bottom:6px;
+}
+
+#profileForm{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+#profileForm .form-group:first-child{
+grid-column:1 / -1;
+}
+
+#profileForm input,
+#profileForm select{
+width:100%;
+padding:14px;
+border:1px solid #dbe2ea;
+border-radius:12px;
+font-size:15px;
+font-family:inherit;
+background:white;
+}
+
+.profile-save-btn{
+grid-column:1 / -1;
+}
+
+#profileMessage{
+grid-column:1 / -1;
+min-height:20px;
+font-weight:600;
+color:#dc2626;
+}
+
+#profileMessage.success{
+color:#059669;
+}
+
+.profile-account-actions{
+margin-top:24px;
+padding-top:20px;
+border-top:1px solid #e2e8f0;
+}
+
+.profile-logout-btn{
+width:100%;
+background:#dc2626;
+}
+
+.profile-logout-btn:hover{
+background:#b91c1c;
+}
+
+@media(max-width:768px){
+
+.profile-panel{
+padding:18px;
+}
+
+#profileForm{
+grid-template-columns:1fr;
+}
+
+}

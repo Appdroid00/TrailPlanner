@@ -20,7 +20,7 @@
 
   .container{
     padding:15px;
-    padding-bottom:90px;
+    padding-bottom:150px;
   }
 
   .topbar{
@@ -61,9 +61,7 @@
 @media(max-width:600px){
 
   .trip-tabs{
-    display:grid !important;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+    display:none !important;
   }
 
   .tab-btn{

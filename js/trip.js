@@ -21,6 +21,10 @@ document.addEventListener(
 
     loadTrip();
 
+    if (window.location.hash === "#notes") {
+      showTab("notes");
+    }
+
     const saveBtn =
       document.getElementById(
         "saveNotesBtn"
@@ -183,6 +187,16 @@ async function loadTrip() {
 
   }
 
+  const budgetQuickBtn =
+    document.getElementById(
+      "budgetPageBtnQuick"
+    );
+
+  if (budgetQuickBtn) {
+    budgetQuickBtn.href =
+      `budget.html?id=${tripId}`;
+  }
+
   const packingBtn =
     document.getElementById(
       "packingPageBtn"
@@ -193,6 +207,46 @@ async function loadTrip() {
     packingBtn.href =
       `packing.html?id=${tripId}`;
 
+  }
+
+  const packingQuickBtn =
+    document.getElementById(
+      "packingPageBtnQuick"
+    );
+
+  if (packingQuickBtn) {
+    packingQuickBtn.href =
+      `packing.html?id=${tripId}`;
+  }
+
+  const mobileBudgetLink =
+    document.getElementById(
+      "tripMobileBudgetLink"
+    );
+
+  if (mobileBudgetLink) {
+    mobileBudgetLink.dataset.href =
+      `budget.html?id=${tripId}`;
+  }
+
+  const mobilePackingLink =
+    document.getElementById(
+      "tripMobilePackingLink"
+    );
+
+  if (mobilePackingLink) {
+    mobilePackingLink.dataset.href =
+      `packing.html?id=${tripId}`;
+  }
+
+  const mobileItineraryLink =
+    document.getElementById(
+      "tripMobileItineraryLink"
+    );
+
+  if (mobileItineraryLink) {
+    mobileItineraryLink.dataset.tab =
+      "itinerary";
   }
 
 }

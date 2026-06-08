@@ -43,6 +43,14 @@ body > section:not(.hero):not(.stats){
   align-items:center;
   margin-bottom:30px;
   gap:20px;
+  position:sticky;
+  top:0;
+  z-index:1200;
+  background:rgba(244,247,251,.94);
+  backdrop-filter:saturate(180%) blur(10px);
+  padding-top:8px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(226,232,240,.8);
 }
 
 .topbar h1{
@@ -113,10 +121,18 @@ cursor:pointer;
   justify-content:space-between;
   align-items:center;
   margin-bottom:25px;
+  gap:16px;
 }
 
 .hero h2{
   font-size:2rem;
+}
+
+.hero-note{
+  color:#64748b;
+  font-size:.98rem;
+  margin-top:6px;
+  flex:1;
 }
 
 .hero button{
@@ -201,6 +217,17 @@ cursor:pointer;
   color:#4b5563;
 }
 
+.trip-card-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.trip-card-actions button{
+  flex:1 1 96px;
+}
+
 /* =========================
    BUTTONS
 ========================= */
@@ -209,11 +236,16 @@ button{
   background:#2563eb;
   color:white;
   border:none;
-  padding:10px 18px;
+  padding:12px 18px;
   border-radius:10px;
   cursor:pointer;
   font-weight:600;
   transition:.2s;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1.1;
 }
 
 button:hover{
@@ -227,6 +259,11 @@ button:hover{
   border-radius:10px;
   text-decoration:none;
   font-weight:600;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1.1;
 }
 
 .back-btn:hover{
@@ -253,6 +290,7 @@ button:hover{
   font-weight:600;
   display:inline-block;
   text-align:center;
+  min-height:44px;
 }
 
 .tab-btn:hover{
@@ -285,13 +323,18 @@ button:hover{
   background:rgba(0,0,0,.5);
   justify-content:center;
   align-items:center;
-  z-index:1000;
+  z-index:3000;
+  padding:16px;
+  overflow-y:auto;
 }
 
 .modal-content{
   background:white;
-  width:90%;
+  width:min(92vw, 500px);
   max-width:500px;
+  max-height:calc(100svh - 32px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
   padding:30px;
   border-radius:20px;
   position:relative;
@@ -338,7 +381,7 @@ button:hover{
   cursor:pointer;
   border-radius:8px;
 
-  z-index:9999;
+  z-index:3001;
   transition:.2s;
 }
 
@@ -358,17 +401,90 @@ button:hover{
   right:0;
   background:white;
   display:flex;
-  justify-content:space-around;
-  padding:15px;
+  justify-content:space-between;
+  gap:14px;
+  padding:18px 16px 14px;
   border-top:1px solid #e5e7eb;
-  box-shadow:0 -5px 15px rgba(0,0,0,.08);
+  border-radius:28px 28px 0 0;
+  box-shadow:0 -16px 36px rgba(15,23,42,.16);
+  z-index:1100;
 }
 
-.mobile-nav a{
+.mobile-nav-btn{
+  appearance:none;
   text-decoration:none;
-  font-size:.82rem;
+  flex:1;
+  min-height:88px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%);
+  border:1px solid #cbd7e6;
+  font-size:1rem;
   font-weight:700;
-  color:#475569;
+  color:#334155;
+  box-shadow:
+    0 10px 18px rgba(15,23,42,.12),
+    0 1px 0 rgba(255,255,255,.9) inset;
+  cursor:pointer;
+  padding:10px 8px;
+  transition:background .15s, transform .15s, border-color .15s, box-shadow .15s;
+}
+
+.mobile-nav-btn span{
+  display:block;
+}
+
+.mobile-nav-icon{
+  width:34px;
+  height:34px;
+  color:#2563eb;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.mobile-nav-btn:hover{
+  background:#eef4ff;
+  border-color:#c7d2fe;
+}
+
+.mobile-nav-btn:active{
+  transform:translateY(1px);
+}
+
+.mobile-nav-btn[aria-current="page"]{
+  background:#2563eb;
+  color:white;
+  border-color:#2563eb;
+}
+
+.mobile-nav-btn[aria-current="page"] .mobile-nav-icon{
+  color:white;
+}
+
+.mobile-nav-btn:focus-visible{
+  outline:3px solid rgba(37,99,235,.25);
+  outline-offset:2px;
+}
+
+.hero button,
+.add-btn,
+.primary-btn,
+.secondary-btn,
+.edit-btn,
+.delete-btn,
+.danger-btn{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1.1;
 }
 
 /* =========================
@@ -381,6 +497,8 @@ button:hover{
     flex-direction:column;
     align-items:flex-start;
     gap:15px;
+    padding-top:12px;
+    padding-bottom:12px;
   }
 
   body > .topbar,
@@ -389,6 +507,22 @@ button:hover{
   body > section:not(.hero):not(.stats){
     padding-left:15px;
     padding-right:15px;
+  }
+
+  body{
+    padding-bottom:150px;
+  }
+
+  .modal{
+    align-items:flex-start;
+    padding:12px;
+  }
+
+  .modal-content{
+    width:100%;
+    max-height:calc(100svh - 24px);
+    padding:22px 18px;
+    border-radius:18px;
   }
 
   .user-info{
@@ -402,12 +536,46 @@ button:hover{
     gap:15px;
   }
 
+  .hero-note{
+    margin-top:-4px;
+  }
+
   .stats{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+
+  .stats .stat-card:nth-child(3){
+    grid-column:1 / -1;
   }
 
   .trip-grid{
     grid-template-columns:1fr;
+  }
+
+  .stat-card{
+    padding:14px 16px;
+    min-height:auto;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:10px;
+  }
+
+  .stat-card h3{
+    grid-column:2;
+    grid-row:1;
+    font-size:1.25rem;
+    line-height:1.15;
+    text-align:right;
+  }
+
+  .stat-card p{
+    grid-column:1;
+    grid-row:1;
+    margin-top:0;
+    font-size:.92rem;
+    font-weight:600;
   }
 
 }
@@ -415,9 +583,7 @@ button:hover{
 @media(max-width:600px){
 
   .trip-tabs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+    display:none;
   }
 
   .tab-btn{
@@ -426,6 +592,53 @@ button:hover{
     display:flex;
     align-items:center;
     justify-content:center;
+  }
+
+  .back-btn,
+  .hero button,
+  .add-btn,
+  .primary-btn,
+  .secondary-btn,
+  .edit-btn,
+  .delete-btn,
+  .danger-btn{
+    min-height:44px;
+    padding:12px 16px;
+  }
+
+  .mobile-nav{
+    gap:10px;
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .mobile-nav-btn{
+    min-height:76px;
+    border-radius:14px;
+    font-size:.9rem;
+    gap:6px;
+  }
+
+  .mobile-nav-icon{
+    width:28px;
+    height:28px;
+  }
+
+  .trip-card-actions{
+    display:grid !important;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .trip-card-actions button{
+    width:100%;
+    min-height:42px;
+    padding:10px 14px;
+  }
+
+  .trip-card-actions .delete-btn,
+  .trip-card-actions button[style*="#dc2626"]{
+    grid-column:1 / -1;
   }
 
 }

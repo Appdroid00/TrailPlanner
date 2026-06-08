@@ -305,6 +305,39 @@ async function loadTrip() {
       `trip.html?id=${tripId}#notes`;
   }
 
+  const mobileTripLink =
+    document.getElementById(
+      "packingMobileTripLink"
+    );
+
+  if (mobileTripLink) {
+    mobileTripLink.dataset.href =
+      `trip.html?id=${tripId}`;
+  }
+
+  const mobileBudgetLink =
+    document.getElementById(
+      "packingMobileBudgetLink"
+    );
+
+  if (mobileBudgetLink) {
+    mobileBudgetLink.dataset.href =
+      `budget.html?id=${tripId}`;
+  }
+
+  const mobileNotesLink =
+    document.getElementById(
+      "packingMobileNotesLink"
+    );
+
+  if (mobileNotesLink) {
+    mobileNotesLink.dataset.href =
+      `trip.html?id=${tripId}#notes`;
+    mobileNotesLink.removeAttribute(
+      "data-scroll"
+    );
+  }
+
 }
 async function loadPackingItems() {
 

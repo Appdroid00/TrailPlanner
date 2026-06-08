@@ -151,15 +151,63 @@ Notes
 
 <section
 id="overview"
-class="tab-content">
+class="tab-content trip-hub">
 
-<h2>
-Trip Overview
-</h2>
+<div class="trip-hub-grid">
+
+<div class="hub-panel">
+
+<div class="section-header section-header-tight">
+
+  <div>
+
+    <p class="section-eyebrow">
+      Trip Hub
+    </p>
+
+    <h2>
+      Continue Planning
+    </h2>
+
+  </div>
+
+</div>
 
 <div id="overviewContent">
 
 Loading...
+
+</div>
+
+</div>
+
+<aside class="hub-panel hub-actions-panel">
+
+  <h3>
+    Quick Actions
+  </h3>
+
+  <div class="hub-actions">
+
+    <button type="button" onclick="showTab('itinerary')">
+      Itinerary
+    </button>
+
+    <a id="budgetPageBtnQuick" href="#">
+      Budget
+    </a>
+
+    <a id="packingPageBtnQuick" href="#">
+      Packing
+    </a>
+
+    <button type="button" onclick="showTab('notes')">
+      Notes
+    </button>
+
+  </div>
+
+</aside>
 
 </div>
 
@@ -228,6 +276,11 @@ No activities yet.
 
 </div>
 
+<div
+  id="mobileItineraryList"
+  class="itinerary-mobile-list">
+</div>
+
 </div>
 
 </div>
@@ -265,6 +318,27 @@ Save Notes
 </section>
 
 </div>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+
+  <button id="tripMobileHomeLink" type="button" class="mobile-nav-btn" data-href="index.html">
+    <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5 10.5V20h5v-6h4v6h5v-9.5"></path></svg>
+    <span>Home</span>
+  </button>
+  <button id="tripMobileItineraryLink" type="button" class="mobile-nav-btn" data-tab="itinerary">
+    <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6z"></path><path d="M9 8h6"></path><path d="M9 12h6"></path></svg>
+    <span>Itinerary</span>
+  </button>
+  <button id="tripMobileBudgetLink" type="button" class="mobile-nav-btn">
+    <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h14a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H5a2 2 0 0 1-2-2V8a1 1 0 0 1 1-1Z"></path><path d="M16 12h5"></path><path d="M17.5 15a1.5 1.5 0 0 1 0-3"></path></svg>
+    <span>Budget</span>
+  </button>
+  <button id="tripMobilePackingLink" type="button" class="mobile-nav-btn">
+    <svg class="mobile-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="6" width="10" height="14" rx="2"></rect><path d="M9 6V4h6v2"></path><path d="M5 8v10"></path><path d="M19 8v10"></path></svg>
+    <span>Packing</span>
+  </button>
+
+</nav>
 
 <!-- ACTIVITY MODAL -->
 

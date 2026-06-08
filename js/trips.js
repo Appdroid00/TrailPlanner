@@ -66,6 +66,8 @@ document.addEventListener(
 
     }
 
+    wireMobileNav([]);
+
     window.addEventListener(
       "click",
       (e) => {
@@ -140,6 +142,62 @@ async function loadTrips() {
   updateStats(
     data
   );
+
+  wireMobileNav(data);
+
+}
+
+function wireMobileNav(trips) {
+
+  const homeLink =
+    document.getElementById(
+      "dashboardMobileHomeLink"
+    );
+
+  if (homeLink) {
+    homeLink.dataset.href =
+      "index.html";
+  }
+
+  const tripsLink =
+    document.getElementById(
+      "dashboardMobileTripsLink"
+    );
+
+  if (tripsLink) {
+    tripsLink.dataset.scroll =
+      "#tripList";
+  }
+
+  const budgetLink =
+    document.getElementById(
+      "dashboardMobileBudgetLink"
+    );
+
+  if (budgetLink) {
+    if (trips && trips.length > 0) {
+      budgetLink.dataset.href =
+        `budget.html?id=${trips[0].id}`;
+      budgetLink.removeAttribute("data-action");
+    } else {
+      budgetLink.dataset.action =
+        "open-trip-modal";
+      budgetLink.removeAttribute("data-href");
+    }
+  }
+
+  const profileLink =
+    document.getElementById(
+      "dashboardMobileProfileLink"
+    );
+
+  if (profileLink) {
+    profileLink.dataset.href =
+      "profile.html";
+    profileLink.removeAttribute(
+      "data-action"
+    );
+  }
 
 }
 
@@ -253,6 +311,7 @@ function renderTrips(
         </p>
 
         <div
+          class="trip-card-actions"
           style="
             display:flex;
             gap:10px;
