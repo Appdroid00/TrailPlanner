@@ -512,6 +512,10 @@ function renderPackingItems(items) {
             class="edit-btn"
             onclick="editPackingItem('${item.id}')">
 
+            <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+            </svg>
             Edit
 
           </button>
@@ -520,6 +524,13 @@ function renderPackingItems(items) {
             class="delete-btn"
             onclick="deletePackingItem('${item.id}')">
 
+            <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6h18"></path>
+              <path d="M8 6V4h8v2"></path>
+              <path d="M6 6l1 15h10l1-15"></path>
+              <path d="M10 11v6"></path>
+              <path d="M14 11v6"></path>
+            </svg>
             Delete
 
           </button>

@@ -1,4 +1,5 @@
 let editingTripId = null;
+let pendingDeleteTripId = null;
 
 
 document.addEventListener(
@@ -25,6 +26,21 @@ document.addEventListener(
     const form =
       document.getElementById(
         "tripForm"
+      );
+
+    const deleteModal =
+      document.getElementById(
+        "deleteTripModal"
+      );
+
+    const cancelDeleteBtn =
+      document.getElementById(
+        "cancelDeleteTripBtn"
+      );
+
+    const confirmDeleteBtn =
+      document.getElementById(
+        "confirmDeleteTripBtn"
       );
 
     if (openBtn) {
@@ -66,6 +82,24 @@ document.addEventListener(
 
     }
 
+    if (cancelDeleteBtn) {
+
+      cancelDeleteBtn.addEventListener(
+        "click",
+        closeDeleteTripModal
+      );
+
+    }
+
+    if (confirmDeleteBtn) {
+
+      confirmDeleteBtn.addEventListener(
+        "click",
+        confirmDeleteTrip
+      );
+
+    }
+
     wireMobileNav([]);
 
     window.addEventListener(
@@ -78,6 +112,15 @@ document.addEventListener(
 
           modal.style.display =
             "none";
+
+        }
+
+        if (
+          deleteModal &&
+          e.target === deleteModal
+        ) {
+
+          closeDeleteTripModal();
 
         }
 
@@ -320,25 +363,40 @@ function renderTrips(
           ">
 
           <button
+            class="open-btn"
             onclick="openTrip('${trip.id}')">
 
+            <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 7h6l2 2h10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"></path>
+              <path d="M3 7V5a2 2 0 0 1 2-2h4l2 2h5a2 2 0 0 1 2 2v2"></path>
+            </svg>
             Open
 
           </button>
 
           <button
+            class="edit-btn"
             onclick="editTrip('${trip.id}')">
 
+            <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+            </svg>
             Edit
 
           </button>
 
           <button
-            style="
-              background:#dc2626;
-            "
+            class="delete-btn"
             onclick="deleteTrip('${trip.id}')">
 
+            <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6h18"></path>
+              <path d="M8 6V4h8v2"></path>
+              <path d="M6 6l1 15h10l1-15"></path>
+              <path d="M10 11v6"></path>
+              <path d="M14 11v6"></path>
+            </svg>
             Delete
 
           </button>
@@ -587,14 +645,39 @@ async function deleteTrip(
   id
 ) {
 
-  const confirmed =
-    confirm(
-      "Delete this trip?"
+  pendingDeleteTripId = id;
+
+  const deleteModal =
+    document.getElementById(
+      "deleteTripModal"
     );
 
-  if (
-    !confirmed
-  ) {
+  if (deleteModal) {
+    deleteModal.style.display =
+      "flex";
+  }
+
+}
+
+function closeDeleteTripModal() {
+
+  pendingDeleteTripId = null;
+
+  const deleteModal =
+    document.getElementById(
+      "deleteTripModal"
+    );
+
+  if (deleteModal) {
+    deleteModal.style.display =
+      "none";
+  }
+
+}
+
+async function confirmDeleteTrip() {
+
+  if (!pendingDeleteTripId) {
     return;
   }
 
@@ -606,7 +689,7 @@ async function deleteTrip(
     .delete()
     .eq(
       "id",
-      id
+      pendingDeleteTripId
     );
 
   if (error) {
@@ -619,6 +702,7 @@ async function deleteTrip(
 
   }
 
+  closeDeleteTripModal();
   loadTrips();
 
 }
