@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Trip Budget
+</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/budget.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="topbar">
+
+<div>
+
+<h1 id="tripName">
+Loading...
+</h1>
+
+<p id="tripDates">
+Loading...
+</p>
+
+</div>
+
+<a
+href="index.html"
+id="backBtn"
+class="back-btn">
+
+Back to Trip
+
+</a>
+
+</header>
+
+<section class="stats">
+
+<div class="stat-card">
+
+<h3 id="totalBudget">
+PHP 0
+</h3>
+
+<p>
+Budget
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3 id="totalSpent">
+PHP 0
+</h3>
+
+<p>
+Spent
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3 id="remainingBudget">
+PHP 0
+</h3>
+
+<p>
+Remaining
+</p>
+
+</div>
+
+</section>
+
+<section class="trip-tabs">
+
+<a
+id="overviewBtn"
+class="tab-btn"
+href="#">
+
+Overview
+
+</a>
+
+<a
+id="itineraryBtn"
+class="tab-btn"
+href="#">
+
+Itinerary
+
+</a>
+
+<a
+class="tab-btn active-tab">
+
+Budget
+
+</a>
+
+<a
+id="packingBtn"
+class="tab-btn"
+href="#">
+
+Packing
+
+</a>
+
+<a
+id="notesBtn"
+class="tab-btn"
+href="#">
+
+Notes
+
+</a>
+
+</section>
+
+<section class="budget-summary">
+
+<p id="budgetSummaryText">
+
+PHP 0 spent of PHP 0 budget (0%)
+
+</p>
+
+<div class="budget-progress">
+
+<div
+id="budgetProgressBar"
+class="budget-progress-fill">
+</div>
+
+</div>
+
+</section>
+
+<div class="budget-layout">
+
+<div class="expenses-panel">
+
+<div class="section-header">
+
+<h2>
+Expenses
+</h2>
+
+<button
+id="openExpenseModal"
+class="add-btn">
+
+Add Expense
+
+</button>
+
+</div>
+
+<div id="expenseList">
+
+<div class="empty-state">
+
+<h3>
+No expenses yet
+</h3>
+
+<p>
+Record your first expense.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EXPENSE MODAL -->
+
+<div
+id="expenseModal"
+class="modal">
+
+<div class="modal-content">
+
+<button
+id="closeExpenseModal"
+class="modal-close-btn"
+type="button">
+
+x
+
+</button>
+
+<h2 id="expenseFormTitle">
+
+Record Expense
+
+</h2>
+
+<form id="expenseForm">
+
+<input
+type="date"
+id="expenseDate"
+required>
+
+<select
+id="expenseCategory">
+
+<option value="Accommodation">
+Accommodation
+</option>
+
+<option value="Transport">
+Transport
+</option>
+
+<option value="Food">
+Food
+</option>
+
+<option value="Activities">
+Activities
+</option>
+
+<option value="Shopping">
+Shopping
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+<input
+type="text"
+id="expenseDescription"
+placeholder="Description"
+required>
+
+<input
+type="number"
+id="expenseAmount"
+placeholder="Amount"
+step="0.01"
+required>
+
+<button
+type="submit"
+id="saveExpenseBtn">
+
+Save Expense
+
+</button>
+
+<button
+type="button"
+id="cancelExpenseEditBtn"
+style="display:none;">
+
+Cancel Edit
+
+</button>
+
+<button
+type="button"
+id="deleteExpenseBtn"
+style="display:none;">
+
+Delete Expense
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- DELETE EXPENSE MODAL -->
+
+<div id="deleteExpenseModal" class="modal-overlay">
+
+  <div class="delete-modal">
+
+    <h2>Delete Item</h2>
+
+    <p>
+      Are you sure you want to delete this item?
+    </p>
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        id="cancelDeleteExpenseBtn"
+        class="secondary-btn">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="button"
+        id="confirmDeleteExpenseBtn"
+        class="danger-btn">
+
+        Delete Item
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+<script src="js/supabase.js"></script>
+
+<script src="js/auth.js"></script>
+
+<script src="js/budget.js"></script>
+
+</body>
+
+</html>

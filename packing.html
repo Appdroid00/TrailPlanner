@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Packing Checklist
+</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/packing.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="topbar">
+
+<div>
+
+<h1 id="tripName">
+Loading...
+</h1>
+
+<p id="tripDates">
+Loading...
+</p>
+
+</div>
+
+<a
+href="trip.html"
+id="backBtn"
+class="back-btn">
+
+Back to Trip
+
+</a>
+
+</header>
+
+<section class="stats">
+
+<div class="stat-card">
+<h3 id="totalItems">0</h3>
+<p>Items</p>
+</div>
+
+<div class="stat-card">
+<h3 id="packedItems">0</h3>
+<p>Packed</p>
+</div>
+
+<div class="stat-card">
+<h3 id="packingPercent">0%</h3>
+<p>Progress</p>
+</div>
+
+</section>
+
+<section class="trip-tabs">
+
+<a
+id="overviewBtn"
+class="tab-btn"
+href="#">
+
+Overview
+
+</a>
+
+<a
+id="itineraryBtn"
+class="tab-btn"
+href="#">
+
+Itinerary
+
+</a>
+
+<a
+id="budgetBtn"
+class="tab-btn"
+href="#">
+
+Budget
+
+</a>
+
+<a
+class="tab-btn active-tab">
+
+Packing
+
+</a>
+
+<a
+id="notesBtn"
+class="tab-btn"
+href="#">
+
+Notes
+
+</a>
+
+</section>
+
+<section class="packing-summary">
+
+<p id="packingSummaryText">
+
+0 / 0 Packed (0%)
+
+</p>
+
+<div class="packing-progress">
+
+<div
+id="packingProgressBar"
+class="packing-progress-fill">
+
+</div>
+
+</div>
+
+</section>
+
+<div class="packing-layout">
+
+  <!-- LEFT SIDE -->
+
+  <div class="packing-list-panel">
+
+    <div class="section-header">
+
+      <h2>
+      Packing Checklist
+      </h2>
+
+      <button
+      id="openPackingModal"
+      class="add-btn">
+
+      + Add Item
+
+      </button>
+
+    </div>
+
+    <div class="packing-table-wrapper">
+
+      <table class="packing-table">
+
+        <thead>
+
+          <tr>
+
+            <th class="check-col">
+            Packed
+            </th>
+
+            <th>
+            Item Name
+            </th>
+
+            <th>
+            Category
+            </th>
+
+            <th>
+            Qty
+            </th>
+
+            <th>
+            Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="packingList">
+
+           
+
+          <tr>
+
+            <td colspan="5">
+
+            No items yet.
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+    <div
+    id="mobilePackingList"
+    class="mobile-packing-list">
+</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="quick-list-card">
+
+    <h2>
+    Quick List
+    </h2>
+
+    <input
+    type="text"
+    id="quickSearch"
+    placeholder="Search items...">
+
+    <div
+    id="quickList"
+    class="quick-list">
+
+    </div>
+
+    <button
+    id="addSelectedBtn"
+    type="button">
+
+    Add Selected
+
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+<!-- PACKING MODAL -->
+
+<div
+id="packingModal"
+class="modal">
+
+<div class="modal-content">
+
+<button
+id="closePackingModal"
+class="modal-close-btn"
+type="button">
+
+x
+
+</button>
+
+<h2 id="packingFormTitle">
+
+Add Item
+
+</h2>
+
+<form id="packingForm">
+
+<input
+type="text"
+id="itemName"
+placeholder="Item Name"
+required>
+
+<p
+id="itemError"
+class="field-error">
+
+</p>
+
+<select id="itemCategory">
+
+<option value="Essentials">Essentials</option>
+<option value="Clothing">Clothing</option>
+<option value="Electronics">Electronics</option>
+<option value="Documents">Documents</option>
+<option value="Toiletries">Toiletries</option>
+<option value="Health">Health</option>
+<option value="Accessories">Accessories</option>
+<option value="Other">Other</option>
+
+</select>
+
+<input
+type="number"
+id="itemQuantity"
+value="1"
+min="1">
+
+<button
+type="submit"
+id="savePackingBtn">
+
+Add To List
+
+</button>
+
+<button
+type="button"
+id="cancelPackingEditBtn"
+style="display:none;">
+
+Cancel Edit
+
+</button>
+
+<button
+type="button"
+id="deletePackingBtn"
+style="display:none;">
+
+Delete Item
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+<!-- DELETE CONFIRMATION MODAL -->
+
+<div
+id="deletePackingModal"
+class="modal">
+
+<div
+class="modal-content delete-modal">
+
+<h2>
+
+Delete Item
+
+</h2>
+
+<p>
+
+Are you sure you want to
+delete this item?
+
+</p>
+
+<div class="delete-modal-actions">
+
+<button
+id="cancelDeletePackingBtn"
+type="button">
+
+Cancel
+
+</button>
+
+<button
+id="confirmDeletePackingBtn"
+type="button">
+
+Delete Item
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/packing.js"></script>
+
+</body>
+</html>

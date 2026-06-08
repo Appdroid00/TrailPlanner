@@ -1,0 +1,390 @@
+/* =========================
+   TAB CONTENT
+========================= */
+
+.tab-content{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+margin-bottom:20px;
+}
+
+/* =========================
+   ITINERARY LAYOUT
+========================= */
+
+.itinerary-layout{
+display:block;
+}
+
+.itinerary-list-panel{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.itinerary-list-panel h2{
+margin-bottom:20px;
+}
+
+/* =========================
+   ITINERARY HEADER
+========================= */
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.add-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+transition:.2s;
+}
+
+.add-btn:hover{
+background:#1d4ed8;
+}
+
+/* =========================
+   ACTIVITY MODAL FORM
+========================= */
+
+#activityForm{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+#activityTitle{
+grid-column:1 / -1;
+}
+
+#activityNotes{
+grid-column:1 / -1;
+}
+
+#activityForm button{
+grid-column:1 / -1;
+background:#2563eb;
+color:white;
+border:none;
+padding:14px;
+border-radius:10px;
+font-weight:600;
+cursor:pointer;
+}
+
+#activityForm input,
+#activityForm select,
+#activityForm textarea{
+padding:12px;
+border:1px solid #ddd;
+border-radius:10px;
+width:100%;
+font-family:inherit;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+#activityModal{
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+#activityModal .modal-content{
+position:relative;
+width:90%;
+max-width:700px;
+}
+
+/* =========================
+   DAY GROUP
+========================= */
+
+details{
+margin-bottom:18px;
+background:#f8fafc;
+border-radius:14px;
+padding:14px;
+}
+
+summary{
+cursor:pointer;
+font-size:18px;
+font-weight:700;
+padding:4px 0;
+}
+
+/* =========================
+   ACTIVITY ROW
+========================= */
+
+.activity-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+padding:14px 18px;
+background:white;
+border-radius:12px;
+margin-top:12px;
+border-left:4px solid #2563eb;
+box-shadow:0 2px 6px rgba(0,0,0,.05);
+}
+
+.activity-time{
+min-width:100px;
+font-size:18px;
+font-weight:700;
+color:#2563eb;
+}
+
+.activity-details{
+flex:1;
+}
+
+.activity-details strong{
+display:block;
+font-size:18px;
+margin-bottom:4px;
+}
+
+.activity-details small{
+font-size:14px;
+color:#64748b;
+}
+
+.activity-actions{
+display:flex;
+gap:8px;
+}
+
+.activity-actions button{
+padding:8px 14px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+background:#2563eb;
+color:white;
+}
+
+.edit-btn{
+background:#10b981 !important;
+color:white;
+}
+
+.delete-btn{
+background:#dc2626 !important;
+}
+
+/* =========================
+   ITINERARY TABLE
+========================= */
+
+.itinerary-table-wrapper{
+overflow-x:auto;
+}
+
+.itinerary-table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:8px;
+overflow:hidden;
+}
+
+.itinerary-table th{
+background:#f8fafc;
+padding:14px;
+text-align:left;
+font-weight:600;
+color:#1e293b;
+border-bottom:1px solid #e2e8f0;
+}
+
+.itinerary-table td{
+padding:14px;
+border-bottom:1px solid #f1f5f9;
+vertical-align:middle;
+}
+
+.itinerary-table tr:hover{
+background:#f8fafc;
+}
+
+.itinerary-actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.completed{
+text-decoration:line-through;
+opacity:.6;
+}
+
+.itinerary-table input[type="checkbox"]{
+width:18px;
+height:18px;
+cursor:pointer;
+}
+
+/* =========================
+   STATUS DROPDOWN
+========================= */
+
+#tripStatusSelect{
+width:100%;
+padding:12px 16px;
+border:1px solid #dbe2ea;
+border-radius:12px;
+font-size:1rem;
+font-weight:600;
+color:#2563eb;
+background:white;
+cursor:pointer;
+outline:none;
+transition:.2s;
+}
+
+#tripStatusSelect:hover{
+border-color:#2563eb;
+}
+
+#tripStatusSelect:focus{
+border-color:#2563eb;
+box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.stat-card{
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.section-header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.add-btn{
+width:100%;
+}
+
+#activityForm{
+grid-template-columns:1fr;
+}
+
+.activity-row{
+flex-direction:column;
+align-items:flex-start;
+gap:12px;
+}
+
+.activity-time{
+min-width:auto;
+}
+
+.activity-actions{
+width:100%;
+justify-content:flex-start;
+flex-wrap:wrap;
+}
+
+.activity-actions button{
+width:100%;
+}
+
+.itinerary-table{
+min-width:760px;
+}
+
+.tab-content,
+.itinerary-list-panel{
+padding:18px;
+}
+
+}
+/* =========================
+   DELETE MODAL
+========================= */
+
+.modal-overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(15,23,42,.45);
+backdrop-filter:blur(4px);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.delete-modal{
+width:90%;
+max-width:450px;
+background:white;
+padding:36px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.delete-modal h2{
+margin:0 0 20px;
+font-size:2rem;
+font-weight:700;
+color:#1e293b;
+}
+
+.delete-modal p{
+margin-bottom:28px;
+color:#64748b;
+}
+
+.modal-actions{
+display:flex;
+justify-content:center;
+gap:12px;
+}
+
+.secondary-btn{
+background:#64748b;
+color:white;
+border:none;
+padding:12px 22px;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+}
+
+.danger-btn{
+background:#dc2626;
+color:white;
+border:none;
+padding:12px 22px;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+}
