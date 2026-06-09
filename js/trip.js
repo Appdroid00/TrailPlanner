@@ -346,16 +346,30 @@ function buildMustTrySection(
       <div class="must-try-grid">
         ${items
           .map(
-            item => `
-              <article class="must-try-card">
+            item => {
+
+              const mapUrl =
+                buildGoogleMapsSearchUrl(
+                  title,
+                  item.title
+                );
+
+              return `
+              <a
+                class="must-try-card must-try-link"
+                href="${mapUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open ${item.title} in Google Maps">
                 <div class="must-try-card-top">
                   <span class="must-try-tag">${item.tag}</span>
                   <span class="must-try-note">${item.note}</span>
                 </div>
                 <h4>${item.title}</h4>
                 <p>${item.body}</p>
-              </article>
-            `
+              </a>
+            `;
+            }
           )
           .join("")}
       </div>
@@ -428,6 +442,23 @@ function buildMustTrySources(
         .join("")}
     </div>
   `;
+
+}
+
+function buildGoogleMapsSearchUrl(
+  destination,
+  placeName
+) {
+
+  const query =
+    [
+      placeName,
+      destination
+    ]
+      .filter(Boolean)
+      .join(", ");
+
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
 }
 
