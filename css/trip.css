@@ -120,6 +120,123 @@ transition:.2s;
 background:#1d4ed8;
 }
 
+.must-try-panel{
+margin-top:16px;
+background:#f8fafc;
+border:1px solid #dbe7f5;
+border-radius:12px;
+padding:16px;
+box-shadow:0 8px 20px rgba(15,23,42,.04);
+}
+
+.must-try-header{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:12px;
+margin-bottom:14px;
+}
+
+.must-try-header h3{
+font-size:1.2rem;
+margin:0;
+color:#0f172a;
+}
+
+.must-try-chip{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:6px 10px;
+border-radius:999px;
+background:#e0ecff;
+color:#2563eb;
+font-size:.78rem;
+font-weight:700;
+white-space:nowrap;
+}
+
+.must-try-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
+}
+
+.must-try-card{
+background:white;
+border:1px solid #e2e8f0;
+border-radius:12px;
+padding:14px;
+box-shadow:0 6px 16px rgba(15,23,42,.04);
+}
+
+.must-try-card-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:10px;
+}
+
+.must-try-tag{
+display:inline-flex;
+align-items:center;
+padding:4px 8px;
+border-radius:999px;
+background:#eff6ff;
+color:#2563eb;
+font-size:.75rem;
+font-weight:700;
+}
+
+.must-try-note{
+font-size:.75rem;
+font-weight:700;
+color:#64748b;
+white-space:nowrap;
+}
+
+.must-try-card h4{
+font-size:1rem;
+margin:0 0 6px;
+color:#0f172a;
+}
+
+.must-try-card p{
+margin:0;
+font-size:.92rem;
+line-height:1.45;
+color:#475569;
+}
+
+.must-try-footnote,
+.must-try-empty{
+margin-top:12px;
+font-size:.86rem;
+color:#64748b;
+line-height:1.5;
+}
+
+.must-try-sources{
+display:flex;
+flex-wrap:wrap;
+gap:8px 12px;
+margin-top:14px;
+padding-top:12px;
+border-top:1px solid #dbe7f5;
+}
+
+.must-try-sources a{
+font-size:.82rem;
+font-weight:600;
+color:#2563eb;
+text-decoration:none;
+}
+
+.must-try-sources a:hover{
+text-decoration:underline;
+}
+
 /* =========================
    ACTIVITY MODAL FORM
 ========================= */
@@ -584,6 +701,28 @@ grid-template-columns:1fr;
 
 .hub-panel{
 padding:16px;
+}
+
+.must-try-panel{
+padding:14px;
+}
+
+.must-try-grid{
+grid-template-columns:1fr;
+}
+
+.must-try-header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.must-try-card-top{
+align-items:flex-start;
+flex-direction:column;
+}
+
+.must-try-note{
+white-space:normal;
 }
 
 .hub-actions-panel{
