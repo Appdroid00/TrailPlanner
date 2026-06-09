@@ -325,6 +325,52 @@ border-radius:14px;
 padding:14px;
 }
 
+.itinerary-day-group{
+border:1px solid #dbe7f5;
+border-radius:16px;
+background:#ffffff;
+padding:12px;
+box-shadow:0 8px 20px rgba(15,23,42,.06);
+}
+
+.itinerary-day-summary{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+cursor:pointer;
+list-style:none;
+padding:4px 2px 12px;
+font-weight:700;
+color:#1e293b;
+}
+
+.itinerary-day-summary::-webkit-details-marker{
+display:none;
+}
+
+.itinerary-day-label{
+display:flex;
+flex-direction:column;
+gap:2px;
+}
+
+.itinerary-day-label strong{
+font-size:1rem;
+}
+
+.itinerary-day-count{
+font-size:.85rem;
+color:#64748b;
+white-space:nowrap;
+}
+
+.itinerary-day-cards{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
 .itinerary-mobile-top{
 display:flex;
 justify-content:space-between;
@@ -333,6 +379,10 @@ align-items:flex-start;
 }
 
 .itinerary-mobile-date{
+display:none;
+}
+
+.itinerary-mobile-time{
 font-size:.85rem;
 color:#64748b;
 margin-bottom:4px;
@@ -425,6 +475,20 @@ width:100%;
 
 #activityForm{
 grid-template-columns:1fr;
+gap:10px;
+}
+
+#activityForm input,
+#activityForm select,
+#activityForm textarea{
+padding:10px 12px;
+border-radius:10px;
+font-size:.92rem;
+}
+
+#activityForm button{
+min-height:42px;
+padding:10px 14px;
 }
 
 .activity-row{
@@ -492,14 +556,14 @@ font-size:.92rem;
 
 #activityModal .modal-content{
 width:100%;
-max-height:calc(100svh - 24px);
-padding:22px 18px;
-border-radius:18px;
+max-height:calc(100svh - 16px);
+padding:18px 14px;
+border-radius:16px;
 }
 
 #activityModal{
 align-items:flex-start;
-padding:12px;
+padding:8px;
 }
 
 .itinerary-table-wrapper{
@@ -599,14 +663,14 @@ font-weight:600;
 
   .modal-overlay{
     align-items:flex-start;
-    padding:12px;
+    padding:8px;
   }
 
   .delete-modal{
     width:100%;
-    max-height:calc(100svh - 24px);
-    padding:24px 18px;
-    border-radius:18px;
+    max-height:calc(100svh - 16px);
+    padding:18px 14px;
+    border-radius:16px;
   }
 
 }

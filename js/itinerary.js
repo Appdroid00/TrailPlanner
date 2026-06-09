@@ -5,6 +5,7 @@ const itineraryTripId =
 
 let editingActivityId = null;
 let deleteActivityId = null;
+let itineraryTripStartDate = null;
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -56,6 +57,9 @@ document.addEventListener(
       .single();
 
     if (trip) {
+
+      itineraryTripStartDate =
+        trip.start_date;
 
       document.getElementById(
         "activityDate"
@@ -525,7 +529,180 @@ function renderActivities(
           </div>
         `
       ).join("");
+
+    const mobileCards =
+      Array.from(
+        mobileContainer.querySelectorAll(
+          ".itinerary-mobile-card"
+        )
+      );
+
+    const groupedCards =
+      mobileCards.reduce(
+        (groups, card) => {
+
+          const dateText =
+            card.querySelector(
+              ".itinerary-mobile-date"
+            )?.textContent.trim() || "No date";
+
+          if (!groups[dateText]) {
+            groups[dateText] = [];
+          }
+
+          groups[dateText].push(card);
+
+          return groups;
+
+        },
+        {}
+      );
+
+    mobileContainer.innerHTML = "";
+
+    Object.entries(
+      groupedCards
+    ).forEach(
+      ([dateText, cards], index) => {
+
+        const group =
+          document.createElement(
+            "details"
+          );
+
+        group.className =
+          "itinerary-day-group";
+        group.open = true;
+
+        const header =
+          document.createElement(
+            "summary"
+          );
+
+        header.className =
+          "itinerary-day-summary";
+
+        const dayNumber =
+          getTripDayNumber(
+            cards[0]
+              .querySelector(
+                ".itinerary-mobile-date"
+              )
+              ?.textContent.trim()
+          );
+
+        const dayTitle =
+          dayNumber
+            ? `Day ${dayNumber}`
+            : `Day ${index + 1}`;
+
+        header.innerHTML = `
+          <span class="itinerary-day-label">
+            <strong>${dayTitle}</strong>
+            ${formatDateLabel(dateText)}
+          </span>
+          <span class="itinerary-day-count">
+            ${cards.length} ${cards.length === 1 ? "activity" : "activities"}
+          </span>
+        `;
+
+        const body =
+          document.createElement(
+            "div"
+          );
+
+        body.className =
+          "itinerary-day-cards";
+
+        cards.forEach(
+          card => body.appendChild(card)
+        );
+
+        group.append(
+          header,
+          body
+        );
+        mobileContainer.appendChild(
+          group
+        );
+
+      }
+    );
   }
+
+}
+
+function formatDateLabel(dateValue) {
+
+  if (!dateValue) {
+    return "No date";
+  }
+
+  return new Date(
+    `${dateValue}T00:00:00`
+  ).toLocaleDateString(
+    "en-US",
+    {
+      month: "short",
+      day: "numeric"
+    }
+  );
+
+}
+
+function getTripDayNumber(dateValue) {
+
+  if (
+    !dateValue ||
+    !itineraryTripStartDate
+  ) {
+    return null;
+  }
+
+  const currentDate =
+    new Date(
+      `${dateValue}T00:00:00`
+    );
+
+  const startDate =
+    new Date(
+      `${itineraryTripStartDate}T00:00:00`
+    );
+
+  const diffDays =
+    Math.round(
+      (
+        currentDate -
+        startDate
+      ) / 86400000
+    );
+
+  return diffDays >= 0
+    ? diffDays + 1
+    : null;
+
+}
+
+function groupActivitiesByDate(activities) {
+
+  return activities.reduce(
+    (groups, activity) => {
+
+      const dateKey =
+        activity.activity_date ||
+        "No date";
+
+      if (!groups[dateKey]) {
+        groups[dateKey] = [];
+      }
+
+      groups[dateKey].push(activity);
+
+      return groups;
+
+    },
+    {}
+  );
 
 }
 

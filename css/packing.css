@@ -382,6 +382,19 @@ width:100%;
 
 #packingForm{
 grid-template-columns:1fr;
+gap:10px;
+}
+
+#packingForm input,
+#packingForm select{
+padding:10px 12px;
+border-radius:10px;
+font-size:.92rem;
+}
+
+#packingForm button{
+min-height:42px;
+padding:10px 14px;
 }
 
 .packing-table{
@@ -464,40 +477,49 @@ background:#b91c1c;
 
   .modal{
     align-items:flex-start;
-    padding:12px;
+    padding:8px;
   }
 
   .modal-content{
     width:100%;
-    max-height:calc(100svh - 24px);
-    padding:22px 18px;
-    border-radius:18px;
+    max-height:calc(100svh - 16px);
+    padding:18px 14px;
+    border-radius:16px;
+  }
+
+  .modal-close-btn{
+    top:10px;
+    right:10px;
+    width:32px;
+    height:32px;
+    font-size:24px;
+    border-radius:8px;
   }
 
   #packingModal{
     align-items:flex-start;
-    padding:12px;
+    padding:8px;
   }
 
   #packingModal .modal-content{
     width:100%;
-    max-height:calc(100svh - 24px);
-    padding:22px 18px;
-    border-radius:18px;
+    max-height:calc(100svh - 16px);
+    padding:18px 14px;
+    border-radius:16px;
   }
 
   #deletePackingModal .modal-content{
     width:100%;
-    max-height:calc(100svh - 24px);
-    padding:24px 18px;
-    border-radius:18px;
+    max-height:calc(100svh - 16px);
+    padding:18px 14px;
+    border-radius:16px;
   }
 
   .delete-modal{
     width:100%;
-    max-height:calc(100svh - 24px);
-    padding:24px 18px;
-    border-radius:18px;
+    max-height:calc(100svh - 16px);
+    padding:18px 14px;
+    border-radius:16px;
   }
 
 }

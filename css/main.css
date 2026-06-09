@@ -624,26 +624,59 @@ button:active{
 
   .modal{
     align-items:flex-start;
-    padding:12px;
+    padding:8px;
   }
 
   .modal-content{
     width:100%;
-    max-height:calc(100svh - 24px);
-    padding:22px 18px;
-    border-radius:18px;
+    max-height:calc(100svh - 16px);
+    padding:18px 14px;
+    border-radius:16px;
+  }
+
+  .modal-content h2{
+    margin-bottom:14px;
+    font-size:1.35rem;
+  }
+
+  .modal-content form{
+    gap:12px;
+  }
+
+  .modal-content input,
+  .modal-content select,
+  .modal-content textarea{
+    padding:11px 12px;
+  }
+
+  .modal-close-btn{
+    top:10px;
+    right:10px;
+    width:32px;
+    height:32px;
+    font-size:24px;
+    border-radius:8px;
   }
 
   .modal-overlay{
     align-items:flex-start;
-    padding:12px;
+    padding:8px;
   }
 
   .delete-modal{
     width:100%;
-    max-height:calc(100svh - 24px);
-    padding:24px 18px;
-    border-radius:18px;
+    max-height:calc(100svh - 16px);
+    padding:18px 14px;
+    border-radius:16px;
+  }
+
+  .delete-modal h2{
+    margin-bottom:12px;
+    font-size:1.2rem;
+  }
+
+  .delete-modal p{
+    margin-bottom:18px;
   }
 
   .user-info{
@@ -712,6 +745,10 @@ button:active{
     display:none;
   }
 
+  .back-btn{
+    display:none;
+  }
+
   .tab-btn{
     width:100%;
     min-height:44px;
@@ -733,23 +770,23 @@ button:active{
   }
 
   .mobile-nav{
-    gap:8px;
-    padding:10px 8px 8px;
-    border-radius:22px 22px 0 0;
+    gap:7px;
+    padding:8px 7px 7px;
+    border-radius:18px 18px 0 0;
   }
 
   .mobile-nav-btn{
-    min-height:62px;
-    border-radius:12px;
-    font-size:.8rem;
-    gap:4px;
-    padding:7px 5px 6px;
+    min-height:52px;
+    border-radius:10px;
+    font-size:.74rem;
+    gap:3px;
+    padding:6px 4px 5px;
   }
 
   .mobile-nav-icon{
-    width:24px;
-    height:24px;
-    stroke-width:2.5;
+    width:20px;
+    height:20px;
+    stroke-width:2.45;
   }
 
   .trip-card-actions{
@@ -824,6 +861,28 @@ button:active{
 
   #tripForm{
     grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .form-group{
+    gap:5px;
+  }
+
+  .form-group label{
+    font-size:.8rem;
+  }
+
+  #tripForm input,
+  #tripForm select,
+  #tripForm textarea{
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:.92rem;
+  }
+
+  #tripForm button{
+    min-height:42px;
+    padding:10px 14px;
   }
 
 }
