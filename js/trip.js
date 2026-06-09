@@ -251,6 +251,45 @@ async function loadTrip() {
 
 }
 
+function updateTripItineraryProgress(
+  activities
+) {
+
+  const total =
+    activities.length;
+
+  const completed =
+    activities.filter(
+      activity => activity.completed
+    ).length;
+
+  const percent =
+    total > 0
+      ? (completed / total) * 100
+      : 0;
+
+  const progressText =
+    document.getElementById(
+      "tripItineraryProgressText"
+    );
+
+  if (progressText) {
+    progressText.textContent =
+      `${completed} / ${total} Activities (${percent.toFixed(0)}%)`;
+  }
+
+  const progressBar =
+    document.getElementById(
+      "tripItineraryProgressBar"
+    );
+
+  if (progressBar) {
+    progressBar.style.width =
+      `${percent}%`;
+  }
+
+}
+
 async function saveNotes() {
 
   const notes =

@@ -71,29 +71,42 @@ Budget
 
 <div class="stat-card">
 
-<select id="tripStatusSelect">
+<h3 id="tripItineraryProgressText">
+0 / 0 Activities
+</h3>
 
-<option value="Planning">
-Planning
-</option>
+<div class="trip-progress-track">
 
-<option value="Booked">
-Booked
-</option>
+  <div
+    id="tripItineraryProgressBar"
+    class="trip-progress-fill">
+  </div>
 
-<option value="In Progress">
-In Progress
-</option>
-
-<option value="Completed">
-Completed
-</option>
-
-</select>
+</div>
 
 <p>
-Status
+Itinerary Progress
 </p>
+
+<select id="tripStatusSelect">
+
+  <option value="Planning">
+    Planning
+  </option>
+
+  <option value="Booked">
+    Booked
+  </option>
+
+  <option value="In Progress">
+    In Progress
+  </option>
+
+  <option value="Completed">
+    Completed
+  </option>
+
+</select>
 
 </div>
 

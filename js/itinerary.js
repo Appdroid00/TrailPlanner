@@ -260,6 +260,12 @@ async function loadActivities() {
     data || []
   );
 
+  if (typeof updateTripItineraryProgress === "function") {
+    updateTripItineraryProgress(
+      data || []
+    );
+  }
+
 }
 
 async function saveActivity(
@@ -501,6 +507,10 @@ function renderActivities(
 
             <p class="itinerary-mobile-location">
               ${activity.location || "-"}
+            </p>
+
+            <p class="itinerary-mobile-notes">
+              ${activity.notes || ""}
             </p>
 
             <div class="itinerary-mobile-actions">

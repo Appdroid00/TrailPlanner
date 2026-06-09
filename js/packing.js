@@ -549,22 +549,49 @@ function renderPackingItems(items) {
       items.map(item => `
 
         <div
-          class="mobile-packing-item ${item.packed ? "packed" : ""}"
-          onclick="editPackingItem('${item.id}')">
+          class="mobile-packing-item ${item.packed ? "packed" : ""}">
 
-          <input
-            type="checkbox"
-            ${item.packed ? "checked" : ""}
-            onclick="
-              event.stopPropagation();
-              togglePacked('${item.id}', ${item.packed});
-            ">
+          <div
+            class="mobile-packing-main"
+            onclick="editPackingItem('${item.id}')">
 
-          <span>
+            <input
+              type="checkbox"
+              ${item.packed ? "checked" : ""}
+              onclick="
+                event.stopPropagation();
+                togglePacked('${item.id}', ${item.packed});
+              ">
 
-            ${item.item_name}
+            <span class="mobile-packing-label">
 
-          </span>
+              ${item.item_name}
+
+            </span>
+
+          </div>
+
+          <div class="mobile-packing-actions">
+
+            <button
+              type="button"
+              class="mobile-packing-edit"
+              onclick="event.stopPropagation(); editPackingItem('${item.id}')">
+
+              Edit
+
+            </button>
+
+            <button
+              type="button"
+              class="mobile-packing-delete"
+              onclick="event.stopPropagation(); deletePackingItem('${item.id}')">
+
+              Delete
+
+            </button>
+
+          </div>
 
         </div>
 
