@@ -29,7 +29,9 @@ TrailPlanner is a travel planning web app built with plain HTML, CSS, and vanill
 - Packing list with packed/unpacked status
 - Profile storage for user details and preferences
 - Mobile bottom navigation
+- Home page mobile nav shows Home, Trips, and Profile only
 - Compact responsive modals and mobile-friendly layouts
+- App logo shown in the main headers and login screen
 
 ## Supabase Tables
 
@@ -117,6 +119,7 @@ TrailPlanner is a travel planning web app built with plain HTML, CSS, and vanill
 - Mobile layouts keep content readable and scrollable.
 - Mobile itinerary items are grouped by trip day for easier scrolling.
 - Modal forms use compact spacing on phones to reduce screen height.
+- Budget access stays inside the trip pages on mobile.
 
 ## Current Status
 
@@ -133,6 +136,7 @@ Completed:
 - Custom delete modals
 - Mobile itinerary grouping
 - Compact mobile modal forms
+- App logo applied across screens
 
 Ongoing:
 
